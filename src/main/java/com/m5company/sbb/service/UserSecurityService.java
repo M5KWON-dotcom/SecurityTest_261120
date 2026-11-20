@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.m5company.sbb.UserRepository;
+import com.m5company.sbb.repository.UserRepository;
 import com.m5company.sbb.entity.SiteUser;
 
 import lombok.RequiredArgsConstructor;

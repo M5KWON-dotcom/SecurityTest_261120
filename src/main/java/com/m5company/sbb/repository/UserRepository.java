@@ -1,10 +1,9 @@
-package com.m5company.sbb;
+package com.m5company.sbb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.m5company.sbb.entity.SiteUser;
 import java.util.List;
-
 
 
 public interface UserRepository extends JpaRepository<SiteUser, Long>{

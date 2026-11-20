@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
 <h1>첫 대문 페이지</h1>
 <hr>
-<form th:href="@{/login}">로그인으로 이동하기
-</form>
+<!-- 로그인 하지 않았을때 보이는 코드 -->
+<div sec:authorize="isAnonymous()">
+<a href="@{/login}">로그인으로 이동하기</a>
+</div>
+<!-- 로그인 했을때 보이는 코드 -->
+<div sec:authorize="isAuthenticated()">
+<a href="@{/logout}">로그아웃으로 이동하기</a>
+</div>
+<!-- 관리자페이지 -->
+<div sec:authorize="hasRole('ADMIN')">
+<a th:href="@{/admin}">관리자메뉴(관리자만 보임)</a>
+</div>
+<!-- 회원페이지 -->
+<div sec:authorize="hasRole('USER')">
+<a th:href="@{/userinfo}">회원정보메뉴(일반유저만 보임)</a>
+</div>
 </body>
 </html>

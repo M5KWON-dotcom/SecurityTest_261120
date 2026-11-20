@@ -1,4 +1,4 @@
-package com.m5company.config;
+package com.m5company.sbb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +10,8 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 @Configuration
 public class SecurityConfig {
+	
+	
 	
 	@Bean
 	PasswordEncoder passwordEncoder() {
@@ -28,11 +30,14 @@ public class SecurityConfig {
 		    //admin요청 -> 관리자만 허가해야하는 요청
             .requestMatchers(  //허가해야 할 목록 작성
             		"/", //루트요청 허용(대문페이지 허용)
-            		"/login", //로그인 요청 허용
-            		"/signup", //회원가입 요청허용
+            		"/user/login", //로그인 요청 허용
+            		"/user/signup", //회원가입 요청허용
             		"/css/**", //css파일이 허용되도록 등록
             		"/img/**",  //이미지파일이 허용되도록 등록
-            		"js/**" //자바스크립트 파일이 허용되도록등록
+            		"/js/**", //자바스크립트 파일이 허용되도록등록
+            		"/question/list",  //게시판리스트
+            		"/qustion/detail/**" //게시판 내용보기
+            		
             ).permitAll()
             .requestMatchers(  //허가해야 할 목록 작성
             		"/admin" //관리자 페이지 요청
@@ -52,7 +57,7 @@ public class SecurityConfig {
 		            		.logoutUrl("/logout")
 		            		.logoutSuccessUrl("/") 
 		            		.invalidateHttpSession(true) //세션초기화 세션에 올라와있는 로그인정보 삭제
-		            		.deleteCookies("JSECCIONID")//쿠키삭제
+		            		.deleteCookies("JSESSIONID")//쿠키삭제
 		            );
 		            
 		    return http.build();
