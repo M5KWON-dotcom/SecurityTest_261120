@@ -13,6 +13,10 @@ public class signForm {
 	@NotBlank(message= "비밀번호는 필수 입력사항입니다.")
 	@Size(min =4, message="비밀번호는 4자 이상이어야합니다.")
 	private String password;
+	
+	@NotBlank(message= "비밀번호확인은 필수 사항입니다.")
+	private String password_check;
+	
 	@NotBlank(message= "비밀번호는 필수 입력사항입니다.")
 	private String email;
 }
