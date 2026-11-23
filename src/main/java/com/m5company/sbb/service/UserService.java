@@ -1,5 +1,6 @@
 package com.m5company.sbb.service;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,12 +31,21 @@ public class UserService {
 		}else {
 			siteUser.setRole(userRole.USER);
 		}
-		
-		siteUser.setRole(userRole.USER);
+	
 		//롤 권한->일반 (기본 회원권한은 일반회원으로 설정)
 		//siteUser.setRole(userRole.ADMIN);
 	    //롤 권한 ->관리자
 		userRepository.save(siteUser);
 		return siteUser;
+	}
+	public SiteUser getUser(String username) {
+		
+		SiteUser user = userRepository.findByUsername(username);
+		
+		if(user==null) {
+			throw new UsernameNotFoundException("해당 회원은 존재하지 않습니다.");
+		}else {
+			return user;
+		}
 	}
 }
