@@ -66,6 +66,14 @@ public class QuestionService {
 		
 		questionRepository.save(question);
 	}
+	//질문글 삭제하기
+	public void questionDelete(Integer id) {
+		questionRepository.deleteById(id);
+	}
+	//질문글 추천수 증가하기 메소드
+	public void questionVote(Question question,SiteUser user) {
+		
+	}
 	
 	
 }

@@ -1,12 +1,14 @@
 package com.m5company.sbb.entity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,5 +36,6 @@ public class Answer {
 	@ManyToOne
 	private SiteUser author; //답변 작성자
 
-	
+	@ManyToMany
+	private Set<SiteUser> voter;//중복을 허용하지 않음 ->set
 }
